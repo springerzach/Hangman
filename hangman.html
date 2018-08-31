@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Coding Boot Camp - Word Guess</title>
+
+  <!-- Bootstrap is used to make game look nicer -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+  <!-- Bootstrap Container will hold everything -->
+  <div class="container">
+    <!-- Jumbotron holds the title section -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Coding Boot Camp - Word Guess</h1>
+        <h2>Guess the name of students from class!</h2>
+        <small>Click any letter to begin...</small>
+      </div>
+    </div>
+
+    <!-- Game counters all held here. cards are being used to hold various sections. -->
+    <div class="row">
+      <div class="col-lg-12">
+
+        <!-- First card: Holds the Word to Guess (blanks and guessed word) -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title"><strong>Word to Guess</strong></h3>
+          </div>
+          <div class="card-body">
+            <!-- This h3 section called wordblanks is what we'll be replacing with letters as the user guesses.
+						Pay particular attention to the id called ***wordblanks***. We'll be referencing this in the JavaScript. -->
+            <h3 id="word-blanks">_ _ _ _ _ _ _ _ _ </h3>
+          </div>
+        </div>
+
+        <!-- Second card: Holds the list of Wrong User Guesses. -->
+        <div class="card">
+          <div class="card-body">
+
+            <!-- This span section called userGuesses is where we will be dumping the wrong guesses.
+						Pay particular attention to the id called ****userGuesses***. We'll be referencing this in the JavaScript. -->
+            <strong>Wrong Guesses: </strong> <span id="wrong-guesses"></span>
+          </div>
+        </div>
+
+        <!-- Third card: Holds the Number of Wrong Guesses -->
+        <div class="card">
+          <div class="card-body">
+
+            <!-- This span called guessesLeft is where we will be dumping the number of guesses left.
+						Pay attention to the id called ****guessesLeft****. We'll be referencing this in the JavaScript. -->
+            <strong>Guesses Left: </strong> <span id="guesses-left">9</span>
+          </div>
+        </div>
+
+        <!-- Fourth card: Holds the number of Wins. -->
+        <div class="card">
+          <div class="card-body">
+
+            <!-- This span called winCounter is where we'll be dumping the number of wins.
+						Pay attention to the id called ****winCounter***. We'll be referencing this in the JavaScript. -->
+            <strong>Wins: </strong> <span id="win-counter">0</span>
+          </div>
+        </div>
+
+        <!-- Fifth card: Holds the number of Losses. -->
+        <div class="card">
+          <div class="card-body">
+
+            <!-- This span called winCounter is where we'll be dumping the number of wins.
+						Pay attention to the id called ****winCounter***. We'll be referencing this in the JavaScript. -->
+            <strong>Losses: </strong> <span id="loss-counter">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ <script>
+    // Define an array to hold the possible options for random words
+    var wordsToGuess = ['elephant', 'rhino', 'tiger', 'lion', 'panther', ];
+    // Determined the random number to help determine the random word
+    var selectedIndex = Math.floor(Math.random() * wordsToGuess.length);
+    var chosenWord = wordsToGuess[selectedIndex];
+    
+    console.log("Chosen word: " + chosenWord);
+    // Fill in div with '_' for each letter in chosen word
+    for(var i =0; i < chosenWord.length; i++){
+      document.getElementById("word-blanks").innerHTML += "_ "
+    }
+    function doSomething(e) {
+      console.log(i);
+      console.log("Keycode: " + e.keyCode);
+      console.log("Actual char: " + String.fromCharCode(e.keyCode))
+      var charToCheck = String.fromCharCode(e.keyCode);
+
+      // TODO FIXME: Add code to check for duplicate entries
+
+      // Is the guess correct?
+      for(var z = 0; z < chosenWord.length; z++){
+        // Check each letter to see if it matches
+        if(charToCheck == chosenWord[z]){
+          console.log("nice job");
+        } else {
+          console.log("wrong");
+          document.getElementById("wrong-guesses").innerHTML += charToCheck
+        }
+      } 
+    }
+    // need to create add create a var that saves chosen guess/ maybe appends or fills in hte wrong guess div.
+    // if right replace the '-'with the letter
+    /*create a check if guesses = the word and if so they win and if not they lose 
+    display the answer
+    create a counter and a reset/giveup
+    */
+
+
+</body>
+
+</html>
